@@ -6,7 +6,7 @@ using Elsa.Services;
 
 namespace Elsa.Activities.Entity.Bookmarks
 {
-    public class EntityChangedBookmark : IBookmark
+    public class EntityChangedBookmark  : BaseIBookmark
     {
         public EntityChangedBookmark(string? entityName, EntityChangedAction? action)
         {

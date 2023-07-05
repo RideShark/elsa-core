@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,7 +7,7 @@ using NodaTime;
 
 namespace Elsa.Activities.Temporal.Common.Bookmarks
 {
-    public class TimerBookmark : IBookmark
+    public class TimerBookmark  : BaseIBookmark
     {
         public Instant ExecuteAt { get; set; }
         public Duration Interval { get; set; }

@@ -7,7 +7,7 @@ using Elsa.Services;
 
 namespace Elsa.Activities.Kafka.Bookmarks
 {
-    public class MessageReceivedBookmark : IBookmark
+    public class MessageReceivedBookmark  : BaseIBookmark
     {
         public MessageReceivedBookmark()
         {

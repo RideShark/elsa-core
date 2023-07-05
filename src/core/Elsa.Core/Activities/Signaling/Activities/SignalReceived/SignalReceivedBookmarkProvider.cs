@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -8,7 +8,7 @@ using Elsa.Services;
 // ReSharper disable once CheckNamespace
 namespace Elsa.Activities.Signaling
 {
-    public class SignalReceivedBookmark : IBookmark
+    public class SignalReceivedBookmark  : BaseIBookmark
     {
         public string Signal { get; set; } = default!;
     }

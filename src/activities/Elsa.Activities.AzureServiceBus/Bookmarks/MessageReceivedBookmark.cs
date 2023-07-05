@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace Elsa.Activities.AzureServiceBus.Bookmarks
 {
-    public class MessageReceivedBookmark : IBookmark
+    public class MessageReceivedBookmark  : BaseIBookmark
     {
         [JsonConstructor]
         public MessageReceivedBookmark()

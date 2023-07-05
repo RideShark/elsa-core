@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Elsa.Activities.File.Bookmarks
 {
-    public class FileSystemEventBookmark : IBookmark
+    public class FileSystemEventBookmark  : BaseIBookmark
     {
         public FileSystemEventBookmark()
         {

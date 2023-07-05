@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Elsa.Services;
 
 // ReSharper disable once CheckNamespace
 namespace Elsa.Activities.Workflows
 {
-    public class RunWorkflowBookmark : IBookmark
+    public class RunWorkflowBookmark  : BaseIBookmark
     {
         public string ChildWorkflowInstanceId { get; set; } = default!;
     }

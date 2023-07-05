@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Elsa.Services;
 
 namespace Elsa.Activities.MassTransit.Bookmarks
 {
-    public class MessageReceivedBookmark : IBookmark
+    public class MessageReceivedBookmark  : BaseIBookmark
     {
         public string MessageType { get; set; } = default!;
     }

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Elsa.Activities.Telnyx.Providers.ActivityTypes;
 using Elsa.Services;
 
@@ -6,6 +6,10 @@ namespace Elsa.Activities.Telnyx.Providers.Bookmarks
 {
     public record NotificationBookmark(string EventType) : IBookmark
     {
+        public bool? Compare(IBookmark bookmark)
+        {
+            return null;
+        }
     }
 
     public class NotificationBookmarkProvider : BookmarkProvider<NotificationBookmark>

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Elsa.Activities.RabbitMq.Bookmarks
 {
-    public class MessageReceivedBookmark : IBookmark
+    public class MessageReceivedBookmark  : BaseIBookmark
     {
         public MessageReceivedBookmark()
         {

@@ -6,7 +6,7 @@ using Elsa.Services;
 
 namespace Elsa.Activities.Telnyx.Providers.Bookmarks
 {
-    public class DialBookmark : IBookmark
+    public class DialBookmark  : BaseIBookmark
     {
         public string CallControlId { get; set; } = default!;
     }

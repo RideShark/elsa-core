@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Elsa.Activities.Telnyx.Activities;
@@ -6,7 +6,7 @@ using Elsa.Services;
 
 namespace Elsa.Activities.Telnyx.Providers.Bookmarks
 {
-    public class GatherUsingSpeakBookmark : IBookmark
+    public class GatherUsingSpeakBookmark  : BaseIBookmark
     {
         public string CallControlId { get; set; } = default!;
     }

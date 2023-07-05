@@ -8,7 +8,7 @@ using Elsa.Attributes;
 
 namespace Elsa.Activities.Mqtt.Bookmarks
 {
-    public class MessageReceivedBookmark : IBookmark
+    public class MessageReceivedBookmark  : BaseIBookmark
     {
         public MessageReceivedBookmark()
         {

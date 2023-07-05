@@ -9,7 +9,7 @@ using Elsa.Services;
 
 namespace Elsa.Activities.Telnyx.Providers.Bookmarks
 {
-    public abstract class FilteredCallInitiatedBookmark : IBookmark
+    public abstract class FilteredCallInitiatedBookmark  : BaseIBookmark
     {
         protected FilteredCallInitiatedBookmark()
         {
