@@ -9,7 +9,7 @@ namespace Elsa
     {
         public static async Task<byte[]> ReadBytesToEndAsync(this Stream input, CancellationToken cancellationToken = default)
         {
-            await using var ms = new MemoryStream();
+            using var ms = new MemoryStream();
             await input.CopyToAsync(ms, 16 * 1024, cancellationToken);
             return ms.ToArray();
         }

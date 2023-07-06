@@ -89,7 +89,7 @@ namespace Elsa.Activities.Telnyx.Providers.ActivityTypes
                 },
                 ActivateAsync = async context => await _activityActivator.ActivateActivityAsync<Webhook>(context, cancellationToken),
                 CanExecuteAsync = (context, instance) => instance.CanExecuteAsync(context),
-                ExecuteAsync = (context, instance) => instance.ExecuteAsync(context),
+                ExecuteAsync = (context, instance) => instance.Execute(context),
                 ResumeAsync = (context, instance) => instance.ResumeAsync(context),
             };
         }

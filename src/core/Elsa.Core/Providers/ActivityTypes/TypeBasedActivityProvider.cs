@@ -57,7 +57,7 @@ namespace Elsa.Providers.ActivityTypes
                 ActivateAsync = async context => await ActivateActivity(context, activityType),
                 DescribeAsync = async () => (await _describesActivityType.DescribeAsync(activityType, cancellationToken))!, 
                 CanExecuteAsync = async (context, instance) => await instance.CanExecuteAsync(context),
-                ExecuteAsync = async (context, instance) => await instance.ExecuteAsync(context),
+                ExecuteAsync = async (context, instance) => await instance.Execute(context),
                 ResumeAsync = async (context, instance) => await instance.ResumeAsync(context)
             };
         }

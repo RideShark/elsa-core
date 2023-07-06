@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Elsa.Secrets.Api.Endpoints.Secrets
 {
     [ApiController]
-    [ApiVersion("1")]
+    
     [Route("v{apiVersion:apiVersion}/secrets")]
     [Produces(MediaTypeNames.Application.Json)]
     public class List : Controller

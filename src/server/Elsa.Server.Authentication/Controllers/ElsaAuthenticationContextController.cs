@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Elsa.Server.Authentication.Controllers
 {
     [ApiController]
-    [ApiVersion("1")]
+    
     [Route("v{apiVersion:apiVersion}/ElsaAuthentication/options")]
     [Produces("application/json")]
     public class ElsaAuthenticationContextController : Controller

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Elsa.Secrets.Api.Endpoints.Secrets
 {
     [ApiController]
-    [ApiVersion("1")]
+    
     [Route("v{apiVersion:apiVersion}/secrets/{id}")]
     [Produces("application/json")]
     public class Delete : Controller

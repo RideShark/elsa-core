@@ -10,7 +10,7 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace Elsa.WorkflowTesting.Api.Endpoints
 {
     [ApiController]
-    [ApiVersion("1")]
+    
     [Route("v{apiVersion:apiVersion}/workflow-test/execute")]
     [Produces("application/json")]
     public class Execute : Controller

@@ -8,7 +8,13 @@ namespace Elsa.Activities.UserTask.Bookmarks
 {
     using UserTask = Elsa.Activities.UserTask.Activities.UserTask;
 
-    public record UserTaskBookmark(string Action) : IBookmark;
+    public record UserTaskBookmark(string Action) : IBookmark
+    {
+        public bool? Compare(IBookmark bookmark)
+        {
+            return null;
+        }
+    }
 
     public class UserTaskBookmarkProvider : BookmarkProvider<UserTaskBookmark, UserTask>
     {

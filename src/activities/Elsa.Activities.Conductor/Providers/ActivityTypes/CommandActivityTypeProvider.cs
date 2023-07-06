@@ -69,7 +69,7 @@ namespace Elsa.Activities.Conductor.Providers.ActivityTypes
                     return activity;
                 },
                 CanExecuteAsync = async (context, instance) => await instance.CanExecuteAsync(context),
-                ExecuteAsync = async (context, instance) => await instance.ExecuteAsync(context),
+                ExecuteAsync = async (context, instance) => await instance.Execute(context),
                 ResumeAsync = async (context, instance) => await instance.ResumeAsync(context)
             };
         }

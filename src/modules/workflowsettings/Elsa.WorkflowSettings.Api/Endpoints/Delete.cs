@@ -9,7 +9,7 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace Elsa.WorkflowSettings.Api.Endpoints
 {
     [ApiController]
-    [ApiVersion("1")]
+    
     [Route("v{apiVersion:apiVersion}/workflow-settings/{id}")]
     [Produces("application/json")]
     public class Delete : Controller

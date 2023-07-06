@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Elsa.Events;
+using Elsa.Extensions;
 using Elsa.Models;
 using Elsa.Persistence;
 using Elsa.Persistence.Specifications;
@@ -240,7 +241,7 @@ namespace Elsa.Services.Workflows
             if (workflowDefinition.DefinitionId == null!)
                 workflowDefinition.DefinitionId = _idGenerator.Generate();
 
-            if (workflowDefinition.CreatedAt == Instant.MinValue || workflowDefinition.CreatedAt == Instant.FromDateTimeOffset(DateTimeOffset.UnixEpoch))
+            if (workflowDefinition.CreatedAt == Instant.MinValue || workflowDefinition.CreatedAt == Instant.FromDateTimeOffset(DateTimeOffsetExtensions.UnixEpoch))
                 workflowDefinition.CreatedAt = _clock.GetCurrentInstant();
 
             return workflowDefinition;

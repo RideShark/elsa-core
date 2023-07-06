@@ -1,3 +1,5 @@
+using Elsa.Extensions;
+using Elsa.Services;
 using Microsoft.Win32;
 using System;
 using System.Diagnostics;
@@ -29,7 +31,7 @@ namespace Elsa.Activities.Rpa.Web.Services
             chromeVersion ??= await GetChromeVersion();
 
             //   Take the Chrome version number, remove the last part, 
-            chromeVersion = chromeVersion[..chromeVersion.LastIndexOf('.')];
+            chromeVersion = chromeVersion.Substring(0, chromeVersion.LastIndexOf('.'));
 
             //   and append the result to URL "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_". 
             //   For example, with Chrome version 72.0.3626.81, you'd get a URL "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_72.0.3626".
@@ -78,12 +80,11 @@ namespace Elsa.Activities.Rpa.Web.Services
                     new ProcessStartInfo
                     {
                         FileName = targetPath,
-                        ArgumentList = { "--version" },
                         UseShellExecute = false,
                         CreateNoWindow = true,
                         RedirectStandardOutput = true,
                         RedirectStandardError = true,
-                    }
+                    }.AddArgument("--version")
                 )!;
                 string existingChromeDriverVersion = await process.StandardOutput.ReadToEndAsync();
                 string error = await process.StandardError.ReadToEndAsync();
@@ -92,7 +93,7 @@ namespace Elsa.Activities.Rpa.Web.Services
 
                 // expected output is something like "ChromeDriver 88.0.4324.96 (68dba2d8a0b149a1d3afac56fa74648032bcf46b-refs/branch-heads/4324@{#1784})"
                 // the following line will extract the version number and leave the rest
-                existingChromeDriverVersion = existingChromeDriverVersion.Split(" ")[1];
+                existingChromeDriverVersion = existingChromeDriverVersion.Split(' ')[1];
                 if (chromeDriverVersion == existingChromeDriverVersion)
                 {
                     return;
@@ -130,12 +131,11 @@ namespace Elsa.Activities.Rpa.Web.Services
                     new ProcessStartInfo
                     {
                         FileName = "chmod",
-                        ArgumentList = { "+x", targetPath },
                         UseShellExecute = false,
                         CreateNoWindow = true,
                         RedirectStandardOutput = true,
                         RedirectStandardError = true,
-                    }
+                    }.AddArgument("+x").AddArgument(targetPath)
                 )!;
                 string error = await process.StandardError.ReadToEndAsync();
                 process.WaitForExit();
@@ -169,12 +169,11 @@ namespace Elsa.Activities.Rpa.Web.Services
                         new ProcessStartInfo
                         {
                             FileName = "google-chrome",
-                            ArgumentList = { "--product-version" },
                             UseShellExecute = false,
                             CreateNoWindow = true,
                             RedirectStandardOutput = true,
                             RedirectStandardError = true,
-                        }
+                        }.AddArgument("--product-version")
                     )!;
                     string output = await process.StandardOutput.ReadToEndAsync();
                     string error = await process.StandardError.ReadToEndAsync();
@@ -201,12 +200,11 @@ namespace Elsa.Activities.Rpa.Web.Services
                         new ProcessStartInfo
                         {
                             FileName = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-                            ArgumentList = { "--version" },
                             UseShellExecute = false,
                             CreateNoWindow = true,
                             RedirectStandardOutput = true,
                             RedirectStandardError = true,
-                        }
+                        }.AddArgument("--version")
                     )!;
                     string output = await process.StandardOutput.ReadToEndAsync();
                     string error = await process.StandardError.ReadToEndAsync();

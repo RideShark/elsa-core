@@ -16,7 +16,7 @@ using Swashbuckle.AspNetCore.Filters;
 namespace Elsa.WorkflowSettings.Api.Endpoints
 {
     [ApiController]
-    [ApiVersion("1")]
+    
     [Route("v{apiVersion:apiVersion}/workflow-settings")]
     [Produces(MediaTypeNames.Application.Json)]
     public class List : Controller

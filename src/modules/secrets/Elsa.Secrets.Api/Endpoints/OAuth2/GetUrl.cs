@@ -14,7 +14,7 @@ using Microsoft.Extensions.Configuration;
 namespace Elsa.Secrets.Api.Endpoints.OAuth2;
 
 [ApiController]
-[ApiVersion("1")]
+
 [Route("v{apiVersion:apiVersion}/oauth2/url/{secretId}")]
 [Produces(MediaTypeNames.Application.Json)]
 public class GetUrl : Controller

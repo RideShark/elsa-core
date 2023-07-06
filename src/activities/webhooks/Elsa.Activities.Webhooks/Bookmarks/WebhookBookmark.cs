@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,7 +9,13 @@ using Elsa.Services;
 
 namespace Elsa.Activities.Webhooks.Bookmarks
 {
-    public record WebhookBookmark(string WebhookActivityTypeName) : IBookmark;
+    public record WebhookBookmark(string WebhookActivityTypeName) : IBookmark
+    {
+        public bool? Compare(IBookmark bookmark)
+        {
+            return null;
+        }
+    }
 
     public class WebhookBookmarkProvider : BookmarkProvider<HttpEndpointBookmark>
     {

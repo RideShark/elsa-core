@@ -49,7 +49,7 @@ namespace Elsa.Activities.File
                 RecurseSubdirectories = SubDirectories
             };
             
-            Files = Directory.EnumerateFiles(Path, Pattern, options).ToList();
+            Files = DirectoryExtensions.EnumerateFiles(Path, Pattern, options).ToList();
             return Done(Files);
         }
     }

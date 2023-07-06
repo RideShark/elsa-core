@@ -18,7 +18,7 @@ namespace Elsa.Services.Workflows
     {
         private delegate ValueTask<IActivityExecutionResult> ActivityOperation(ActivityExecutionContext activityExecutionContext, IActivity activity);
 
-        private static readonly ActivityOperation Execute = (context, activity) => activity.ExecuteAsync(context);
+        private static readonly ActivityOperation Execute = (context, activity) => activity.Execute(context);
         private static readonly ActivityOperation Resume = (context, activity) => activity.ResumeAsync(context);
 
         private readonly IWorkflowContextManager _workflowContextManager;

@@ -7,6 +7,7 @@ using Elsa.Attributes;
 using Elsa.Design;
 using Elsa.Events;
 using Elsa.Expressions;
+using Elsa.Extensions;
 using Elsa.Models;
 using Elsa.Services;
 using Elsa.Services.Models;

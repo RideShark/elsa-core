@@ -16,7 +16,7 @@ using Swashbuckle.AspNetCore.Filters;
 namespace Elsa.Webhooks.Api.Endpoints
 {
     [ApiController]
-    [ApiVersion("1")]
+    
     [Route("v{apiVersion:apiVersion}/webhook-definitions")]
     [Produces(MediaTypeNames.Application.Json)]
     public class List : Controller

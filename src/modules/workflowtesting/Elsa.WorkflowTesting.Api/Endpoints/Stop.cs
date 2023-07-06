@@ -11,7 +11,7 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace Elsa.WorkflowTesting.Api.Endpoints
 {
     [ApiController]
-    [ApiVersion("1")]
+    
     [Route("v{apiVersion:apiVersion}/workflow-test/stop")]
     [Produces("application/json")]
     public class Stop : Controller

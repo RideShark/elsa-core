@@ -22,9 +22,11 @@ namespace Elsa.Activities.File
         [ActivityOutput(Hint = "Bytes of the file read.")]
         public byte[]? Bytes { get; set; }
 
-        public override async ValueTask<IActivityExecutionResult> ExecuteAsync(ActivityExecutionContext context)
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+        public override async ValueTask<IActivityExecutionResult> Execute(ActivityExecutionContext context)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
-            Bytes = await System.IO.File.ReadAllBytesAsync(Path);
+            Bytes = System.IO.File.ReadAllBytes(Path);
             return Done(Bytes);
         }
     }

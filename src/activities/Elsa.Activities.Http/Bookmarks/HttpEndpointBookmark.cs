@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -6,7 +6,15 @@ using Elsa.Services;
 
 namespace Elsa.Activities.Http.Bookmarks
 {
-    public record HttpEndpointBookmark(string Path, string? Method) : IBookmark;
+    public record HttpEndpointBookmark(string Path, string? Method) : IBookmark
+    {
+
+        /// <summary>
+        /// Compares this bookmark instance with another to check, if the values are equal for the function of the bookmark.
+        /// </summary>
+        /// <returns><see langword="null"/> if default and no specific compare is done, false if not equal and true otherwise.</returns>
+        public bool? Compare(IBookmark bookmark) => null;
+    }
 
     public class HttpEndpointBookmarkProvider : BookmarkProvider<HttpEndpointBookmark, HttpEndpoint>
     {

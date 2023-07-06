@@ -2,6 +2,7 @@ using Elsa.ActivityResults;
 using Elsa.Attributes;
 using Elsa.Design;
 using Elsa.Expressions;
+using Elsa.Extensions;
 using Elsa.Services;
 using Elsa.Services.Models;
 using System;
@@ -55,7 +56,7 @@ namespace Elsa.Activities.File
             if (!Directory.Exists(folderPath))
                 Directory.CreateDirectory(folderPath);
             
-            await using (var fs = new FileStream(Path, fileMode, fileAccess))
+            using (var fs = new FileStream(Path, fileMode, fileAccess))
             {
                 await fs.WriteAsync(Bytes);
                 await fs.FlushAsync();

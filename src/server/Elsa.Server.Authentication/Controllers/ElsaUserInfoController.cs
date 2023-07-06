@@ -6,7 +6,7 @@ using System.Security.Claims;
 namespace Elsa.Server.Authentication.Controllers
 {
     [ApiController]
-    [ApiVersion("1")]
+    
     [Route("v{apiVersion:apiVersion}/ElsaAuthentication/UserInfo")]
     [Produces("application/json")]
     public class ElsaUserInfoController : Controller

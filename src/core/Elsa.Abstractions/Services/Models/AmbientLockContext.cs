@@ -1,6 +1,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading;
+using Elsa.Extensions;
 using Medallion.Threading;
 
 namespace Elsa.Services.Models

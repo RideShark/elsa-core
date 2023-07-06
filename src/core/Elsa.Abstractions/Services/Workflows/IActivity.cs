@@ -60,7 +60,7 @@ namespace Elsa.Services
         /// <summary>
         /// Executes the specified activity.
         /// </summary>
-        ValueTask<IActivityExecutionResult> ExecuteAsync(ActivityExecutionContext context);
+        ValueTask<IActivityExecutionResult> Execute(ActivityExecutionContext context);
 
         /// <summary>
         /// Resumes the specified activity.

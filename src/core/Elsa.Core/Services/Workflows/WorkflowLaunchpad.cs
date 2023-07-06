@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Elsa.Exceptions;
+using Elsa.Extensions;
 using Elsa.Models;
 using Elsa.Options;
 using Elsa.Persistence;

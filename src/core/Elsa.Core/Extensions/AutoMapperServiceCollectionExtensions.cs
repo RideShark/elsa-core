@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using AutoMapper;
+using AutoMapper.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Elsa

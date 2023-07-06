@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 namespace Elsa.Secrets.Api.Endpoints.OAuth2
 {
     [ApiController]
-    [ApiVersion("1")]
+    
     [Route("v{apiVersion:apiVersion}/oauth2/callback")]
     [Produces("application/json")]
     public class SetAuthCodeCallback : Controller
