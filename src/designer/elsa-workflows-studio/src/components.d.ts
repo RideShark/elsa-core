@@ -225,6 +225,7 @@ export namespace Components {
     }
     interface ElsaSingleLineProperty {
         "activityModel": ActivityModel;
+        "isEncypted"?: boolean;
         "propertyDescriptor": ActivityPropertyDescriptor;
         "propertyModel": ActivityDefinitionProperty;
     }
@@ -264,6 +265,7 @@ export namespace Components {
         "basePath": string;
         "culture": string;
         "history": RouterHistory;
+        "serverUrl": string;
     }
     interface ElsaStudioWorkflowInstancesList {
         "culture": string;
@@ -348,6 +350,7 @@ export namespace Components {
         "basePath": string;
         "culture": string;
         "history"?: RouterHistory;
+        "loadWorkflowDefinitions": () => Promise<void>;
         "serverUrl": string;
     }
     interface ElsaWorkflowFaultInformation {
@@ -1146,6 +1149,7 @@ declare namespace LocalJSX {
     }
     interface ElsaSingleLineProperty {
         "activityModel"?: ActivityModel;
+        "isEncypted"?: boolean;
         "propertyDescriptor"?: ActivityPropertyDescriptor;
         "propertyModel"?: ActivityDefinitionProperty;
     }
@@ -1185,6 +1189,7 @@ declare namespace LocalJSX {
         "basePath"?: string;
         "culture"?: string;
         "history"?: RouterHistory;
+        "serverUrl"?: string;
     }
     interface ElsaStudioWorkflowInstancesList {
         "culture"?: string;

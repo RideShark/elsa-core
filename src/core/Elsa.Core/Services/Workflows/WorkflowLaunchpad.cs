@@ -102,7 +102,7 @@ namespace Elsa.Services.Workflows
             if (workflowBlueprint == null || workflowBlueprint.IsDisabled)
                 return null;
 
-            return await FindStartableWorkflowAsync(workflowBlueprint, activityId, correlationId, contextId, tenantId, cancellationToken);
+            return await FindStartableWorkflowAsync(workflowBlueprint, activityId, correlationId, contextId, tenantId, false, cancellationToken);
         }
 
         public async Task<StartableWorkflow?> FindStartableWorkflowAsync(
@@ -119,7 +119,7 @@ namespace Elsa.Services.Workflows
             if (workflowBlueprint == null || workflowBlueprint.IsDisabled)
                 return null;
 
-            return await FindStartableWorkflowAsync(workflowBlueprint, activityId, correlationId, contextId, tenantId, cancellationToken);
+            return await FindStartableWorkflowAsync(workflowBlueprint, activityId, correlationId, contextId, tenantId, false, cancellationToken);
         }
 
         public async Task<StartableWorkflow?> FindStartableWorkflowAsync(
@@ -128,11 +128,12 @@ namespace Elsa.Services.Workflows
             string? correlationId = default,
             string? contextId = default,
             string? tenantId = default,
+            bool throwIfRunningAndSingleton = false,
             CancellationToken cancellationToken = default)
         {
             async Task<StartableWorkflow?> CollectWorkflows()
             {
-                var startableWorkflowDefinition = await CollectStartableWorkflowInternalAsync(workflowBlueprint, activityId, correlationId, contextId, tenantId, cancellationToken);
+                var startableWorkflowDefinition = await CollectStartableWorkflowInternalAsync(workflowBlueprint, activityId, correlationId, contextId, tenantId, throwIfRunningAndSingleton, cancellationToken);
                 return startableWorkflowDefinition != null ? await InstantiateStartableWorkflow(startableWorkflowDefinition, cancellationToken) : default;
             }
 
@@ -151,6 +152,7 @@ namespace Elsa.Services.Workflows
             string? contextId = default,
             WorkflowInput? input = default,
             string? tenantId = default,
+            bool throwIfRunningAndSingleton = false,
             CancellationToken cancellationToken = default)
         {
             var workflowBlueprint = await _workflowRegistry.FindAsync(workflowDefinitionId, VersionOptions.Published, tenantId, cancellationToken);
@@ -161,7 +163,7 @@ namespace Elsa.Services.Workflows
                 return;
             }
 
-            await FindAndExecuteStartableWorkflowAsync(workflowBlueprint, activityId, correlationId, contextId, input, cancellationToken);
+            await FindAndExecuteStartableWorkflowAsync(workflowBlueprint, activityId, correlationId, contextId, input, throwIfRunningAndSingleton, cancellationToken);
         }
 
         public async Task<RunWorkflowResult> FindAndExecuteStartableWorkflowAsync(
@@ -170,12 +172,13 @@ namespace Elsa.Services.Workflows
             string? correlationId = default,
             string? contextId = default,
             WorkflowInput? input = default,
+            bool throwIfRunningAndSingleton = false,
             CancellationToken cancellationToken = default)
         {
             var workflowDefinitionId = workflowBlueprint.Id;
             var tenantId = workflowBlueprint.TenantId;
 
-            var startableWorkflow = await FindStartableWorkflowAsync(workflowBlueprint, activityId, correlationId, contextId, tenantId, cancellationToken);
+            var startableWorkflow = await FindStartableWorkflowAsync(workflowBlueprint, activityId, correlationId, contextId, tenantId, throwIfRunningAndSingleton, cancellationToken);
 
             if (startableWorkflow == null)
                 throw new WorkflowException($"Could not start workflow with ID {workflowDefinitionId}");
@@ -277,7 +280,7 @@ namespace Elsa.Services.Workflows
                     continue;
                 }
 
-                var startableWorkflow = await CollectStartableWorkflowInternalAsync(workflowBlueprint, trigger.ActivityId, query.CorrelationId!, query.ContextId, query.TenantId, cancellationToken);
+                var startableWorkflow = await CollectStartableWorkflowInternalAsync(workflowBlueprint, trigger.ActivityId, query.CorrelationId!, query.ContextId, query.TenantId, false, cancellationToken);
 
                 if (startableWorkflow != null)
                     startableWorkflows.Add(startableWorkflow);
@@ -292,6 +295,7 @@ namespace Elsa.Services.Workflows
             string? correlationId,
             string? contextId = default,
             string? tenantId = default,
+            bool throwIfRunningAndSingleton = false,
             CancellationToken cancellationToken = default)
         {
             var workflowDefinitionId = workflowBlueprint.Id;
@@ -308,6 +312,8 @@ namespace Elsa.Services.Workflows
                 if (await GetWorkflowIsAlreadyExecutingAsync(tenantId, workflowDefinitionId))
                 {
                     _logger.LogDebug("Workflow {WorkflowDefinitionId} is a singleton workflow and is already running", workflowDefinitionId);
+                    if (throwIfRunningAndSingleton)
+                        throw new WorkflowAlreadyRunningException($"Workflow {workflowDefinitionId} is a singleton workflow and is already running");
                     return null;
                 }
             }
