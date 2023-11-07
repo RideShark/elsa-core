@@ -2,7 +2,25 @@ export const resources = {
   'en': {
     default: {
       'Title': 'Workflow Definitions',
-      'CreateButton': 'Create Workflow'
+      'CreateButton': 'Create Workflow',
+      'BackupButton': 'Backup Workflows',
+      'RestoreButton': 'Restore Workflows'
+    }
+  },
+  'es-ES': {
+    default: {
+      'Title': 'Definiciones de flujo',
+      'CreateButton': 'Crear un nuevo flujo',
+      'BackupButton': 'Generar copia de seguridad',
+      'RestoreButton': 'Restaurar flujos'
+    }
+  },
+  'pt-PT': {
+    default: {
+      'Title': 'Definições de Fluxos',
+      'CreateButton': 'Criar Fluxo',
+      'BackupButton': 'Gerar backup',
+      'RestoreButton': 'Restaurar fluxos'
     }
   },
   'zh-CN': {
